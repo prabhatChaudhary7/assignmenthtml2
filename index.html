@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Properties in Table</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Object Properties</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody id="object-properties">
+        </tbody>
+    </table>
+
+    <script>
+        const sampleObject = {
+            name: "XYZ PQ",
+            age: 34,
+            phone: 65765434,
+            gender: "Male"
+        };
+        function displayObjectProperties(obj) {
+            const tableBody = document.getElementById('object-properties');
+            tableBody.innerHTML = ''; 
+
+            for (const [key, value] of Object.entries(obj)) {
+                const row = document.createElement('tr');
+                
+                const cellKey = document.createElement('td');
+                cellKey.textContent = key.charAt(0).toUpperCase() + key.slice(1); 
+
+                const cellValue = document.createElement('td');
+                cellValue.textContent = value;
+
+                row.appendChild(cellKey);
+                row.appendChild(cellValue);
+                tableBody.appendChild(row);
+            }
+        }
+        displayObjectProperties(sampleObject);
+    </script>
+</body>
+</html>
